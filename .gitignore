@@ -1,0 +1,13 @@
+# folders
+/.dep
+/bak
+/.vscode
+/doc
+/gm_nmo
+/glc_share
+/mat
+
+# sublime text
+*.sublime-workspace
+
+misc.m
