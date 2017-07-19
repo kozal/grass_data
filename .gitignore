@@ -12,3 +12,5 @@
 
 *.mat
 *.asv
+*.m~
+.DS_Store
