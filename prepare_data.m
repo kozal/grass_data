@@ -66,3 +66,43 @@ cmap_grass = [0   0.5 0                 % grassland green
               1   0.5 0.5               % bare land reddish
               1   1   1];               % other white
 save ./mat/cmap_grass.mat cmap_grass
+
+%% structures
+clearvars
+% 
+load ./mat/trewartha_84_88.mat; tr84_88(1,:)=[];
+load ./mat/trewartha_11_15.mat; tr11_15(1,:)=[];
+load ./mat/shr.mat
+load ./mat/nmo_1_1.mat
+
+classes_84  = unique(tr84_88);
+classes_11  = unique(tr11_15);
+classes_shr = unique(shr);
+classes_nmo = unique(nmo_1_1);
+
+shr2trw_row_res = size(shr,1)/size(tr84_88,1);
+shr2trw_clm_res = size(shr,2)/size(tr84_88,2);
+
+nmo2trw_row_res = size(nmo_1_1,1)/size(tr84_88,1) * 2;
+nmo2trw_clm_res = size(nmo_1_1,2)/size(tr84_88,2) * 2;
+
+
+% st_tr_84 = struct('classes',classes_84,...
+%     'min_cls',min(classes_84),'max_cls',max(classes_84));
+% 
+% st_tr_11 = struct('classes',classes_11,...
+%     'min_cls',min(classes_11),'max_cls',max(classes_11));
+
+st_trw = struct('classes',classes_11, 'min_cls',min(classes_11),...
+    'max_cls',max(classes_11));
+
+st_shr = struct('classes',classes_shr, 'min_cls',min(classes_shr),...
+    'max_cls',max(classes_shr), 'trw_row_res',shr2trw_row_res, ...
+    'trw_clm_res',shr2trw_clm_res);
+
+st_nmo = struct('classes',classes_nmo, 'min_cls',min(classes_nmo),...
+    'max_cls',max(classes_nmo), 'trw_row_res',nmo2trw_row_res, ...
+    'trw_clm_res',nmo2trw_clm_res);
+
+save ./mat/structures.mat st_trw st_shr st_nmo
+% save ./mat/structures.mat st_tr_84 st_tr_11 st_shr st_nmo
