@@ -132,3 +132,11 @@ stat_nmo_8488 = stat_nmo_1_1_8488 + stat_nmo_1_2_8488 + ...
 
 stat_nmo_1115 = stat_nmo_1_1_1115 + stat_nmo_1_2_1115 + ...
                 stat_nmo_2_1_1115 + stat_nmo_2_2_1115;
+
+%% trw to trw
+st_trw.trw_row_res = 1;
+st_trw.trw_clm_res = 1;
+
+tic
+stat_trw1115_trw8884 = calc_stat(tr84_88, st_trw, tr11_15, st_trw);
+toc
